@@ -30,67 +30,23 @@ fun coverW() {
     ) {
         //Ahora pondremos la top app bar con el Scafold por que es necesario
         Scaffold(
-            topBar = { topAppBarWhat() }
+            topBar = {
+                topAppBarWhat()
+            },
+
+            floatingActionButton = {
+                floatingButtom()
+            }
         ) {
 
             //Columna para meterlo todo y que calcule el padding
             Column(
                 modifier =
                 Modifier
-                    .fillMaxWidth()
                     //Para que salga justo abajo de la top app bar
                     .padding(top = it.calculateTopPadding())
             ) {
-
-                //Aquí creamos la fila donde ira "chat", "novedades" y "Llamadas"
-                Row(
-                    modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        //Para pintar el fondo de la fila
-                        .background(Color(0xFF039E72)),
-                    horizontalArrangement = Arrangement.Center
-                ) {//Ponemos los textos
-                    Text(
-                        text = "Chat",
-                        modifier = Modifier
-                            //Para centrar el texto en su hueco
-                            .align(Alignment.CenterVertically)
-                            .weight(2f)
-                            .padding(8.dp)
-                            .clickable { },
-                        color = Color.White
-                    )
-                    Text(
-                        text = "Novedades",
-                        modifier = Modifier
-                            //Para centrar el texto en su hueco
-                            .align(Alignment.CenterVertically)
-                            .weight(2f)
-                            .padding(8.dp)
-                            .clickable { },
-                        color = Color.White
-                    )
-                    Text(
-                        text = "Llamadas",
-                        modifier = Modifier
-                            //Para centrar el texto en su hueco
-                            .align(Alignment.CenterVertically)
-                            .weight(1.5f)
-                            .padding(8.dp)
-                            .clickable { },
-                        color = Color.White
-                    )
-                }
-
-                Row(
-                    modifier =
-                    Modifier
-                        .fillMaxWidth()
-                    //Para que salga justo abajo de la top app bar
-                ) {
-                    Text(text = "hioa")
-                }
+                myTabs()
             }
         }
     }

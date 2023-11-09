@@ -10,11 +10,12 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun floatingButtom(){
     FloatingActionButton(onClick = {},
-        containerColor = Purple80) {
+        containerColor = Color(0xFF027A58)
+    ) {
         Icon(
             imageVector = Icons.Default.Check,
             contentDescription = null,
-            tint = Color.Black
+            tint = Color.White
         )
     }
 }
