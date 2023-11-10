@@ -8,12 +8,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun topAppBarWhat(){
+fun topAppBarWhat(scrollBehavior: TopAppBarScrollBehavior){
     TopAppBar(
         title = {
             Text(text = "MyWhatsApp",
@@ -34,6 +35,8 @@ fun topAppBarWhat(){
                 contentDescription = "share",
                 tint = Color.White
             )
-        }
+        },
+        //Importante añadirle esta acción, sino directamente no scrolleara
+        scrollBehavior = scrollBehavior
     )
 }

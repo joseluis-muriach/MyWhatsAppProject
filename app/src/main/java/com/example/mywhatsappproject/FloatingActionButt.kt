@@ -1,4 +1,4 @@
-package com.example.mywhatsappproject.ui.theme
+package com.example.mywhatsappproject
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check

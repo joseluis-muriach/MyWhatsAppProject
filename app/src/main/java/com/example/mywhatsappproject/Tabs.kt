@@ -1,21 +1,14 @@
-package com.example.mywhatsappproject.ui.theme
+package com.example.mywhatsappproject
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.launch
@@ -23,7 +16,9 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun myTabs() {
+    //Esto es para situarte en las pantallas (chat, novedades y llamadas)
     var pagerState = rememberPagerState(initialPage = 0)
+    //Permite navegar por el resto de pantallas
     var scope = rememberCoroutineScope()
 
     val titles = listOf("Chat", "Novedades", "Llamadas")
@@ -33,10 +28,13 @@ fun myTabs() {
             contentColor = Color.White,
             selectedTabIndex = pagerState.currentPage
         ) {
-            titles.forEachIndexed { index, title ->
+            //Lanzas el scope
+            titles.forEachIndexed { index, title -> //Le pasare 3el indice y el titulo
                 Tab(
+                    //Selecciona la pagina donde estas y lo iguala al indice
                     selected = pagerState.currentPage == index,
                     onClick = {
+                        //Cuando cliques te lleva a la ventana
                         scope.launch {
                             pagerState.animateScrollToPage(page = index)
                         }
@@ -51,37 +49,30 @@ fun myTabs() {
                 )
             }
         }
-//        HorizontalPager(pageCount = 3, state = pagerState) { page ->
-//            when (page) {
-//                0 -> {
-//                    Chat()
-//                }
-//
-//
-//                1 -> {
-//                    Novedades()
-//                }
-//
-//
-//                2 -> {
-//                    Llamadas()
-//                }
-//            }
-//        }
-    }
+        //Esto te permite realizar la navegabilidad lateral
+        HorizontalPager(
+            pageCount = 3, //3 ventanas que son 0,1 y 2
+            state = pagerState) { page ->
+            when (page) {
+                0 -> chats()
+                1 -> Novedades()
+                2 ->Llamadas()
+            }
+        }
+   }
 }
 
 @Composable
 fun Llamadas() {
-    TODO("Not yet implemented")
+    Text(
+        text = "Llamadas"
+    )
 }
 
 @Composable
 fun Novedades() {
-    TODO("Not yet implemented")
+    Text(
+        text = "Novedades"
+    )
 }
 
-@Composable
-fun Chat() {
-    TODO("Not yet implemented")
-}
