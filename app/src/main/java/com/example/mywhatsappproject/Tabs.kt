@@ -16,8 +16,9 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun myTabs() {
-    //Esto es para situarte en las pantallas (chat, novedades y llamadas)
-    var pagerState = rememberPagerState(initialPage = 0)
+    //Esto es para situarte en las pantallas (chat, novedades y llamadas) tenemos que hacerlo así
+    //por que al añadir el corazon rotante cambia las librerias y por ende la versión
+    var pagerState = rememberPagerState(initialPage = 0, initialPageOffsetFraction = 0f){3}
     //Permite navegar por el resto de pantallas
     var scope = rememberCoroutineScope()
 
@@ -51,7 +52,6 @@ fun myTabs() {
         }
         //Esto te permite realizar la navegabilidad lateral
         HorizontalPager(
-            pageCount = 3, //3 ventanas que son 0,1 y 2
             state = pagerState) { page ->
             when (page) {
                 0 -> chats()
