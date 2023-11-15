@@ -34,11 +34,11 @@ import kotlinx.coroutines.launch
 fun myTabs() {
     //Esto es para situarte en las pantallas (chat, novedades y llamadas) tenemos que hacerlo así
     //por que al añadir el corazon rotante cambia las librerias y por ende la versión
-    var pagerState = rememberPagerState(initialPage = 0, initialPageOffsetFraction = 0f) { 3 }
+    var pagerState = rememberPagerState(initialPage = 0, initialPageOffsetFraction = 0f) { 4 }
     //Permite navegar por el resto de pantallas
     var scope = rememberCoroutineScope()
 
-    val titles = listOf("Chat", "Novedades", "Llamadas")
+    val titles = listOf("Chat", "Novedades", "Llamadas", "Estrella")
     Column {
         TabRow(
             containerColor = Color(0xFF039E72),
@@ -46,7 +46,7 @@ fun myTabs() {
             selectedTabIndex = pagerState.currentPage
         ) {
             //Lanzas el scope
-            titles.forEachIndexed { index, title -> //Le pasare 3el indice y el titulo
+            titles.forEachIndexed { index, title -> //Le pasare 3 el indice y el titulo
                 Tab(
                     //Selecciona la pagina donde estas y lo iguala al indice
                     selected = pagerState.currentPage == index,
@@ -74,6 +74,7 @@ fun myTabs() {
                 0 -> chats()
                 1 -> Novedades()
                 2 -> Llamadas()
+                3 -> Estrella()
             }
         }
     }
@@ -108,6 +109,27 @@ fun Novedades() {
     val image =
         AnimatedImageVector.animatedVectorResource(
             R.drawable.pause_play
+        )
+
+    var atEnd by remember { mutableStateOf(false) }
+
+    Image(
+        alignment = Alignment.Center,
+        painter = rememberAnimatedVectorPainter(image, atEnd),
+        contentDescription = "VectorDrawable",
+        modifier = Modifier.clickable {
+            atEnd = !atEnd
+        },
+        contentScale = ContentScale.Crop
+    )
+}
+
+@OptIn(ExperimentalAnimationGraphicsApi::class)
+@Composable
+fun Estrella() {
+    val image =
+        AnimatedImageVector.animatedVectorResource(
+            R.drawable.add_estrella
         )
 
     var atEnd by remember { mutableStateOf(false) }
