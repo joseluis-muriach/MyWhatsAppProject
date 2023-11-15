@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_smile">
+    <target
+        android:name="boca sonriente"
+        android:animation="@animator/sonriente_triste" />
+
+    <target
+        android:name="ojo derecho cerrado"
+        android:animation="@animator/ojo_right" />
+
+    <target
+        android:name="ojo izquierdo cerrado"
+        android:animation="@animator/ojo_left" />
+</animated-vector>
